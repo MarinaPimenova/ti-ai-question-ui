@@ -1,0 +1,36 @@
+### ti-ai-question-ui — manual API testing directly against ti-document-worker
+### Requires ti-document-worker running standalone on :8086 (see README "Run as a standalone
+### microservice"). Paths here are unprefixed — as seen by the service itself, without the
+### gateway's leading "/document" segment.
+
+@worker = http://localhost:8086
+
+### Upload a document file — starts async ETL (embeddings + text sections)
+POST {{worker}}/rest/v1/documents
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="java.pdf"
+Content-Type: application/pdf
+
+< ./java.pdf
+--WebAppBoundary--
+
+###
+
+### Load a document from a URL — starts the same async ETL pipeline
+POST {{worker}}/rest/v1/load-url
+Content-Type: application/json
+Accept: application/json
+
+{
+  "url": "https://example.com/spring-boot.pdf"
+}
+
+###
+
+### Health check
+GET {{worker}}/rest/v1/version
+Accept: text/plain
+
+###

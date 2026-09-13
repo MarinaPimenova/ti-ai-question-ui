@@ -1,0 +1,129 @@
+// dashboard.scss
+
+.ai-question-generator {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 3rem;
+
+    &__title {
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+
+    &__section {
+        background: #fff;
+        border: 1px solid #e5e5e5;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    &__intro {
+        text-align: center;
+        margin-bottom: 1.5rem;
+
+        p {
+            margin: 0 0 0.5rem;
+            color: #334155;
+            font-weight: 500;
+        }
+
+        ul {
+            list-style: disc;
+            display: inline-block;
+            text-align: left;
+            margin: 0 0 1.5rem;
+            color: #64748b;
+        }
+    }
+
+    &__upload-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    &__upload-url {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        width: 100%;
+        max-width: 420px;
+
+        span {
+            white-space: nowrap;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+    }
+
+    &__field {
+        margin-bottom: 1.5rem;
+
+        &-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #0f172a;
+        }
+
+        &-hint {
+            display: block;
+            margin-top: 0.25rem;
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+    }
+
+    &__resource-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    &__generate {
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+
+    &__results {
+        min-height: 120px;
+    }
+
+    &__results-title {
+        margin-bottom: 1rem;
+    }
+
+    &__progress {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        padding: 2.5rem 0;
+        color: #64748b;
+    }
+
+    &__empty {
+        text-align: center;
+        color: #94a3b8;
+        padding: 2rem 0;
+    }
+
+    &__save {
+        text-align: center;
+
+        h3 {
+            margin: 0 0 1rem;
+        }
+
+        &-hint {
+            display: block;
+            margin-top: 0.5rem;
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+    }
+}
