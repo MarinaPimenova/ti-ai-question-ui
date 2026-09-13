@@ -1,0 +1,30 @@
+### ti-ai-question-ui — manual API testing directly against ti-document-agent
+### Requires ti-document-agent running standalone on :8087 (see README "Run as a standalone
+### microservice"). Paths here are unprefixed — as seen by the service itself, without the
+### gateway's leading "/document-agent" segment.
+
+@agent = http://localhost:8087
+
+### List uploaded documents
+GET {{agent}}/rest/v1/documents
+Accept: application/json
+
+###
+
+### Generate questions from a document (replace 101 with a real document id from the list above)
+POST {{agent}}/rest/v1/documents/101/question-generation
+Content-Type: application/json
+Accept: application/json
+
+{
+  "userMessage": "Generate questions about the compliance obligations described in this document.",
+  "requestedQuestionCount": 3
+}
+
+###
+
+### Health check
+GET {{agent}}/rest/v1/version
+Accept: text/plain
+
+###

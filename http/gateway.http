@@ -1,0 +1,47 @@
+### ti-ai-question-ui — manual API testing via ti-gateway-api
+### Requires ti-gateway-api running on :8080, routed to ti-document-worker (:8086)
+### and ti-document-agent (:8087). These are the exact paths src/services/rest.service.ts calls.
+
+@gateway = http://localhost:8080
+
+### Upload a document file — starts async ETL (embeddings + text sections)
+POST {{gateway}}/rest/v1/document/documents
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="java.pdf"
+Content-Type: application/pdf
+
+< ./java.pdf
+--WebAppBoundary--
+
+###
+
+### Load a document from a URL — starts the same async ETL pipeline
+POST {{gateway}}/rest/v1/document/load-url
+Content-Type: application/json
+Accept: application/json
+
+{
+  "url": "https://example.com/spring-boot.pdf"
+}
+
+###
+
+### List uploaded documents
+GET {{gateway}}/rest/v1/document-agent/documents
+Accept: application/json
+
+###
+
+### Generate questions from a document (replace 101 with a real document id from the list above)
+POST {{gateway}}/rest/v1/document-agent/documents/101/question-generation
+Content-Type: application/json
+Accept: application/json
+
+{
+  "userMessage": "Generate questions about the compliance obligations described in this document.",
+  "requestedQuestionCount": 3
+}
+
+###

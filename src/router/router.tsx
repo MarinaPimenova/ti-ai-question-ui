@@ -1,12 +1,12 @@
 // router.tsx
-import { createBrowserRouter, RouterProvider, Navigate, Outlet } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import { ROUTE } from './router.enum';
 import { ErrorPage } from '../error';
 import { BaseNetworkError } from '../error/network';
 import { LandingLayout } from '../landing/landing-layout';
 import { ReLogin } from '../error/relogin';
+import { Dashboard } from '../dashboard';
 
-import { isNull } from '../services/utils.service';
 import { ErrorBoundary } from 'react-error-boundary';
 import Fallback from '../error/fallback';
 import type { ErrorInfo } from 'react';
@@ -49,7 +49,7 @@ export const Routes = () => {
             },
         ],
         {
-            basename: '/dashboard-page',
+            basename: '/document',
             future: {
                 v7_relativeSplatPath: true,
                 v7_startTransition: true, // Moved here from <RouterProvider />

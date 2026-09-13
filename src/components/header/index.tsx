@@ -2,7 +2,7 @@ import Logo from './ti-logo.svg?react'; // React component import via vite-plugi
 import { login } from '../../utils/user-util';
 import './header.scss';
 
-export const Index = () => {
+export const Header = () => {
     return (
 
         <header className="app-header">
